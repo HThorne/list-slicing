@@ -15,15 +15,20 @@ def custom_len(input_list):
         8
 
     """
+    # Empty variable for length
+    len_count = 0
 
-    return 0
+    for item in input_list:
+        len_count += 1
+
+    return len_count
 
 
 # For the next four exercises, you'll need to be clever and think about ways
 # to use list slice assignment.
 #
 # NOTE: these are especially contrived. You wouldn't really want
-# to typically append things to a list like this (you'd want to to use the
+# to typically append things to a list like this (you'd want to use the
 # list.append() method), but we want you to practice list slicing assignment
 # in different ways so it sticks in your brain.
 
@@ -43,8 +48,11 @@ def custom_append(input_list, value):
         True
 
     """
+    # new_list = ["replace", value]
 
-    pass
+    # new_list[:1] = input_list
+
+    input_list += [value]
 
 
 def custom_extend(input_list, second_list):
@@ -63,7 +71,7 @@ def custom_extend(input_list, second_list):
 
     """
 
-    pass
+    input_list += second_list
 
 
 def custom_insert(input_list, index, value):
@@ -80,8 +88,12 @@ def custom_insert(input_list, index, value):
         True
 
     """
+    first_list = input_list[:index]
+    end_list = input_list[index:]
+    
+    
+    input_list[:] = first_list + [value] + end_list
 
-    pass
 
 
 def custom_remove(input_list, value):
@@ -99,8 +111,13 @@ def custom_remove(input_list, value):
         True
 
     """
+    index = 0
 
-    pass
+    for item in input_list:
+        if item == value:
+            del input_list[index]
+            break
+        index += 1
 
 
 def custom_pop(input_list):
@@ -118,8 +135,10 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
-
-    return None
+    removed_item = input_list[-1]
+    del input_list[-1]
+    
+    return removed_item
 
 
 def custom_index(input_list, value):
@@ -134,8 +153,13 @@ def custom_index(input_list, value):
         1
 
     """
+    index = 0
 
-    return 0
+    for item in input_list:
+        if item == value:
+            return index
+        
+        index += 1
 
 
 def custom_count(input_list, value):
@@ -150,8 +174,13 @@ def custom_count(input_list, value):
         2
 
     """
-
-    return 0
+    count = 0
+    
+    for item in input_list:
+        if item == value:
+            count += 1
+    
+    return count
 
 
 def custom_reverse(input_list):
@@ -169,8 +198,9 @@ def custom_reverse(input_list):
         True
 
     """
-
-    pass
+    new_list = input_list[::-1]
+    
+    input_list[:] = new_list
 
 
 def custom_contains(input_list, value):
@@ -189,8 +219,10 @@ def custom_contains(input_list, value):
         True
 
     """
-
-    return None
+    if value in input_list: 
+        return True
+    else:
+        return False
 
 
 def custom_equality(some_list, another_list):
@@ -208,5 +240,8 @@ def custom_equality(some_list, another_list):
         False
 
     """
+    if some_list == another_list:
+        return True
+    else:
+        return False
 
-    return None
